@@ -1,0 +1,41 @@
+KeyError                                  Traceback (most recent call last)
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3079             try:
+-> 3080                 return self._engine.get_loc(casted_key)
+   3081             except KeyError as err:
+
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: 'price_per_sqm'
+
+The above exception was the direct cause of the following exception:
+
+KeyError                                  Traceback (most recent call last)
+<ipython-input-45-d303ae081b36> in <module>
+      4 
+      5 fig, ax1 = plt.subplots(1,1, figsize=(20,12))
+----> 6 g = sns.scatterplot(x=combined['cbd_dist'],y=combined['price_per_sqm'], hue=combined['flat_type'], ax=ax1)
+      7 
+      8 box = g.get_position()
+
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pandas/core/frame.py in __getitem__(self, key)
+   3022             if self.columns.nlevels > 1:
+   3023                 return self._getitem_multilevel(key)
+-> 3024             indexer = self.columns.get_loc(key)
+   3025             if is_integer(indexer):
+   3026                 indexer = [indexer]
+
+/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/pandas/core/indexes/base.py in get_loc(self, key, method, tolerance)
+   3080                 return self._engine.get_loc(casted_key)
+   3081             except KeyError as err:
+-> 3082                 raise KeyError(key) from err
+   3083 
+   3084         if tolerance is not None:
+
+KeyError: 'price_per_sqm'
